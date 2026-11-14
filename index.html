@@ -9,6 +9,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Lernweg">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="icon" href="icon-192.png">
 <title>Lernweg</title>
@@ -28,8 +31,10 @@
   --warn:#ff8c75;--warn-soft:#43221b;--good:#6dd19e;--r1:#1b2e44;--r2:#35506e;}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;padding-bottom:calc(var(--tab) + env(safe-area-inset-bottom) + 24px)}
-h1,h2,h3{line-height:1.2;margin:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Nunito,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;padding-bottom:calc(var(--tab) + env(safe-area-inset-bottom) + 24px)}
+h1,h2,h3{line-height:1.2;margin:0;font-family:"Baloo 2",Nunito,sans-serif;font-weight:700}
+h1{font-weight:800}
+.fun{font-family:"Baloo 2",Nunito,sans-serif;font-weight:700}
 h1{font-size:1.55rem;letter-spacing:-.01em}
 h2{font-size:1.08rem}
 h3{font-size:.98rem}
@@ -232,6 +237,64 @@ table.study td,table.study th{white-space:normal}
 .dcol.yes{background:var(--good-soft)}.dcol.yes h3{color:var(--good)}
 .dcol.no{background:var(--warn-soft)}.dcol.no h3{color:var(--warn)}
 @media (max-width:480px){.dd{grid-template-columns:1fr}}
+/* ---------- Wegbegleiter, Landschaft, Pakt ---------- */
+:root{--sky1:#bfe0f7;--sky2:#eef6fc;--sun:#f7c75a;--cloud:#ffffff;--mtn2:#7d9cc0;--snow:#ffffff;--hill2:#9cc9a0;--hill1:#6fae7c;--river:#5fa8dd;--trail:#ecd7ad;--trail-dot:#a5824a;--tree:#3f7d4f;--paper:#fffaf0;--paper-line:#efe4cc}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--sky1:#0b1d33;--sky2:#1a3352;--sun:#e8e2c4;--cloud:#2c4466;--mtn2:#2b4466;--snow:#c9d6e6;--hill2:#24453a;--hill1:#1b382d;--river:#2f5f8f;--trail:#7a6544;--trail-dot:#c9b083;--tree:#2c5e3c;--paper:#1b2633;--paper-line:#2a3a4d}}
+.card,.tile,.station,.rule,.tool,.idea{border-radius:18px}
+.btn{border-radius:14px}
+.fox{width:84px;height:84px;flex:none;animation:bob 2.6s ease-in-out infinite;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.15))}
+.fox.sm{width:56px;height:56px}.fox.xs{width:40px;height:40px}.fox.md{width:72px;height:72px}
+.fox .eyes-open{animation:blinkO 5s infinite}.fox .eyes-closed{opacity:0;animation:blinkC 5s infinite}
+.fox.hop{animation:hop .5s ease-out}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes hop{40%{transform:translateY(-14px) scale(1.06,.94)}}
+@keyframes blinkO{0%,92%,100%{opacity:1}94%,97%{opacity:0}}
+@keyframes blinkC{0%,92%,100%{opacity:0}94%,97%{opacity:1}}
+.scene{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:360/230;box-shadow:0 8px 24px rgba(20,37,56,.12)}
+.scene-svg{position:absolute;inset:0;width:100%;height:100%}
+.scene-title{position:absolute;left:14px;bottom:10px;margin:0;font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.15rem;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+.pin{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;border:3px solid #fff;background:var(--card);font-size:1.3rem;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);padding:0}
+.pin.done{background:var(--good);color:#fff;font-weight:800}
+.pin.now{background:var(--gold)}
+.pin.now::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:3px solid var(--gold);opacity:.6;animation:pulse 2s ease-out infinite}
+.pin.on{outline:3px solid var(--court);outline-offset:2px}
+@keyframes pulse{0%{transform:scale(.8);opacity:.8}100%{transform:scale(1.35);opacity:0}}
+.scene-fox{position:absolute;transform:translate(-50%,-50%);pointer-events:none}
+.fox-say{display:flex;gap:10px;align-items:flex-end;text-align:left}
+button.fox-say{background:none;border:0;padding:0;width:100%;cursor:pointer;color:inherit;font:inherit;margin-top:12px}
+.bubble{position:relative;background:var(--card);border:2px solid var(--line);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.95rem;flex:1;margin:0}
+.fox-say.big .bubble{font-size:1rem}
+.sign{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:16px;position:relative}
+.sign-top{display:flex;gap:12px;align-items:center}
+.sign-ic{width:52px;height:52px;border-radius:16px;background:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-size:1.7rem;flex:none}
+.sign h3{font-size:1.35rem}
+.leit{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.leit-c{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:4px}
+.leit-ic{font-size:1.6rem}
+.leit-c h3{font-size:1.1rem}
+@media (max-width:560px){.leit{grid-template-columns:1fr}}
+.steer.light .steer-bar{background:var(--soft)}
+.spur-form{display:flex;flex-direction:column;gap:8px}
+.trail-list{position:relative;padding-left:6px}
+.trail-list::before{content:"";position:absolute;left:25px;top:8px;bottom:8px;border-left:3px dotted var(--trail-dot);opacity:.6}
+.spur{position:relative;display:flex;gap:12px;align-items:flex-start;padding:8px 0}
+.spur-ic{width:40px;height:40px;border-radius:50%;background:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex:none;z-index:1;border:2px solid var(--card)}
+.spur-tx{flex:1;min-width:0}
+.spur-tx p:first-child{font-weight:700}
+.hero-fox{float:right;margin:-4px -4px 4px 10px}
+.pact-hero{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,var(--gold-soft),var(--court-soft));border-radius:22px;padding:16px}
+.paper{background:var(--paper);border-radius:20px;padding:18px 16px;border:1px solid var(--paper-line);box-shadow:0 4px 14px rgba(20,37,56,.08)}
+.paper.kid{transform:rotate(-.4deg)}
+.paper::before{content:"";display:block;width:70px;height:14px;margin:-26px auto 10px;background:var(--gold);opacity:.55;border-radius:3px;transform:rotate(-2deg)}
+.paper-h{font-family:Caveat,cursive;font-size:1.9rem;font-weight:700;line-height:1;margin:0 0 8px;color:var(--court)}
+.paper.kid .paper-h{color:var(--gold-ink)}
+.paper .mf-item{border-top:0;padding:8px 0}
+.mf-ic{flex:none;width:38px;height:38px;border-radius:12px;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.mf-t{font-size:1.08rem;line-height:1.2}
+.signs{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:2px dashed var(--paper-line)}
+.signature{display:flex;flex-direction:column;min-width:110px}
+.hand{font-family:Caveat,cursive;font-size:1.7rem;line-height:1.1;border-bottom:1.5px solid var(--muted);min-height:1.9rem;color:var(--court)}
+.signature.yes .hand{color:var(--court)}
 .spin{display:inline-block;width:18px;height:18px;border:2px solid var(--line);border-top-color:var(--court);border-radius:50%;animation:sp 1s linear infinite;vertical-align:middle}
 @keyframes sp{to{transform:rotate(360deg)}}
 @media (max-width:420px){.grid3{gap:8px}.tile{padding:10px 9px}.tile .big{font-size:1.35rem}}
@@ -769,8 +832,8 @@ const firstName=()=>esc(S.kid?S.kid.display_name:"Philip");
 const DOCS={
   manifest:{name:"Manifest",
     texts:[["intro_eltern","Einleitung zu unseren Versprechen"],["intro_kind","Einleitung zu Philips Teil"]],
-    secs:[{k:"eltern",n:"Wir an Philip",f:[["t","Versprechen"],["d","Was das heißt",1]]},
-          {k:"kind",n:"Philip an uns",f:[["t","Satz"],["d","Was das heißt",1]]}]},
+    secs:[{k:"eltern",n:"Wir an Philip",f:[["t","Versprechen"],["d","Was das heißt",1],["i","Symbol (ein Emoji, darf leer bleiben)"]]},
+          {k:"kind",n:"Philip an uns",f:[["t","Satz"],["d","Was das heißt",1],["i","Symbol (ein Emoji, darf leer bleiben)"]]}]},
   lernweg:{name:"Lernweg",station:true,
     secs:[{k:"stationen",n:"Die drei Stationen",fixed:true,f:[["t","Name"],["d","Kurz"],["w","Worum es geht",1],["p","Philip …",1],["u","Wir …",1],["n","Weiter, wenn …",1]]},
           {k:"leitsaetze",n:"Leitsätze",f:[["t","Satz"],["d","Erklärung",1]]},
@@ -850,21 +913,6 @@ function vEditor(){
 }
 
 /* ---------- Manifest ---------- */
-function vManifest(){
-  if(S.edit&&S.edit.doc==="manifest")return vEditor();
-  const {c,base,viewing,v}=docContent("manifest");if(!v)return `<div class="empty" style="margin-top:14px">Noch kein Manifest angelegt.</div>`;
-  const list=(sec,cls)=>(c[sec]||[]).map((it,i)=>`<div class="mf-item ${cls}"><span class="mf-n">${i+1}</span><div><p><b>${esc(it.t)}</b>${changed(base,sec,i,it)}</p>${it.d?`<p class="small muted" style="margin-top:2px">${esc(it.d)}</p>`:""}</div></div>`).join("")+removedNote(base,c,sec);
-  const kidDraft=docState("manifest").cur===null;
-  return `<div class="sec"><div class="hero"><p class="kicker" style="color:var(--gold)">Gegenseitig</p><h2 class="hero-h">Was wir uns versprechen</h2>
-      <p class="hero-p">Ein Manifest für unseren Lernweg: was ${KID()?"Mama und Papa dir":"wir Philip"} versprechen und was ${KID()?"du dir von ihnen wünschst":"Philip sich von uns wünscht"}. Es gilt, wenn alle zugestimmt haben, und darf sich mit unseren Erfahrungen verändern.</p></div></div>
-    ${viewing?`<p class="lw-banner small" style="margin-top:12px">Du siehst eine andere Fassung als die gültige. <button class="linkbtn" data-lw="view" data-doc="manifest" data-id="">Zurück zur aktuellen</button></p>`:""}
-    <div class="sec">${docBar("manifest")}</div>
-    <div class="sec"><h2>${KID()?"Mama und Papa an dich":"Wir an Philip"}</h2><div class="card">${c.intro_eltern?`<p class="small muted" style="margin-bottom:8px">${esc(c.intro_eltern)}</p>`:""}${list("eltern","p")}</div></div>
-    <div class="sec"><h2>${KID()?"Du an Mama und Papa":"Philip an uns"}</h2><div class="card">${c.intro_kind?`<p class="small" style="margin-bottom:8px;color:var(--gold-ink)">${esc(c.intro_kind)}</p>`:""}${list("kind","k")}
-      ${kidDraft?`<p class="note">${KID()?"Das sind Vorschläge. Tippe oben auf „Ändern vorschlagen“ und mach es zu deinem Text.":"Philips Teil ist ein Entwurf in seiner Sprache. Er streicht, ändert und ergänzt ihn mit euch, bis es seiner ist."}</p>`:""}</div></div>
-    <div class="sec"><h2>Was wir unterwegs merken</h2>${notesHTML("manifest")}</div>`;
-}
-
 /* ---------- Erfahrungen (Notizen) ---------- */
 function notesHTML(topic){
   const N=S.notes.filter(n=>n.topic===topic);
@@ -889,21 +937,101 @@ function vWeg(){
   const body={weg:wegWeg,philip:wegPhilip,eltern:wegEltern}[S.wsub]||wegWeg;
   return `<div class="chips" style="margin-top:6px">${WSUBS.map(([k,n])=>`<button class="chip ${S.wsub===k?"on":""}" data-wsub="${k}">${k==="philip"&&KID()?"Für dich":n}</button>`).join("")}</div>${body()}`;
 }
+/* ---------- Wegbegleiter: der Fennek aus der Lern-Oase ---------- */
+const FOX=[".oo..............oo.",".ofo............ofo.",".opfo..........ofpo.",".oppfo........ofppo.",".opppfo......ofpppo.",".oppppfoooooofppppo.",".oppffffffffffffppo.",".opffffffffffffffpo.","..offffffffffffffo..","..offweffffffweffo..","..offeeffffffeeffo..","..ofkffllllllffkfo..","...offllllllllffo...","...offlllnnlllffo...","....ofllllllllfo....",".....oooooooooo.....","....offllllllffo....","...offfllllllfffo.oo","...offfllllllfffoofo","...oooooooooooooooo."];
+const FOXC={o:"#5a3a22",f:"#e9b46f",l:"#fdebc8",p:"#f4a3a0",e:"#1d1a17",w:"#ffffff",n:"#1d1a17",k:"#f08a7e"};
+let FOX_INNER=null;
+function foxSVG(cls){
+  if(!FOX_INNER){let body="",open="",closed="";
+    FOX.forEach((row,y)=>[...row].forEach((c,x)=>{if(c===".")return;const r=col=>`<rect x="${x}" y="${y}" width="1.04" height="1.04" fill="${col}"/>`;
+      if((c==="e"||c==="w")&&(y===9||y===10)){open+=r(FOXC[c]);closed+=r(y===10?FOXC.o:FOXC.f);}else body+=r(FOXC[c]);}));
+    FOX_INNER=`${body}<g class="eyes-open">${open}</g><g class="eyes-closed">${closed}</g>`;}
+  return `<svg class="fox ${cls||""}" data-fox="1" viewBox="0 0 20 20" shape-rendering="crispEdges" role="img" aria-label="Fennek, der Wegbegleiter">${FOX_INNER}</svg>`;
+}
+/* Wegsprüche – einer pro Tag, Antippen des Fenneks zeigt den nächsten */
+const SPRUECHE=["Kleine Schritte jeden Tag. Das ist der Weg.","Fehler sind Fußspuren. Sie zeigen, dass du losgegangen bist.","Wer fragt, kommt weiter als der, der so tut, als wüsste er alles.","Auch Pausen gehören zum Weg.","Den Gipfel sieht man erst, wenn man um die Kurve ist.","Gemeinsam ist der Weg kürzer.","Erst selbst versuchen, dann Hilfe holen. Das ist der Weg.","Mut heißt nicht, keine Angst zu haben. Mut heißt, trotzdem einen Schritt zu machen.","Was du anderen erklären kannst, gehört dir.","Heute ein bisschen besser als gestern. Das reicht.","Der Weg ist nicht immer gerade. Hauptsache, du gehst weiter.","Neugier ist die beste Wegzehrung."];
+const dayNo=()=>{const d=new Date();return Math.floor((d-new Date(d.getFullYear(),0,0))/864e5);};
+const spruch=()=>SPRUECHE[(dayNo()+(S.spruch||0))%SPRUECHE.length];
+const foxSay=(text,cls)=>`<div class="fox-say ${cls||""}">${foxSVG("sm")}<p class="bubble">${text}</p></div>`;
+
+/* Landschaft mit dem Weg und den drei Stationen */
+const STPOS=[[16,80],[52,58],[84,17]];
+const STICON=["⛺","🌉","🚩"];
+function sceneSVG(){
+  return `<svg class="scene-svg" viewBox="0 0 360 230" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sky1)"/><stop offset="1" stop-color="var(--sky2)"/></linearGradient></defs>
+    <rect width="360" height="230" fill="url(#sky)"/>
+    <circle cx="58" cy="44" r="18" fill="var(--sun)" opacity=".9"/>
+    <g fill="var(--cloud)" opacity=".85"><ellipse cx="150" cy="34" rx="22" ry="7"/><ellipse cx="164" cy="29" rx="14" ry="8"/><ellipse cx="226" cy="58" rx="16" ry="5"/></g>
+    <path d="M190 120 L262 30 L304 18 L360 70 L360 140 Z" fill="var(--mtn2)"/>
+    <path d="M262 30 L304 18 L322 34 L304 30 L290 40 L276 34 Z" fill="var(--snow)"/>
+    <path d="M0 150 C60 110 120 120 180 132 C240 144 300 108 360 118 L360 230 L0 230 Z" fill="var(--hill2)"/>
+    <path d="M0 185 C70 160 140 170 210 182 C270 192 320 172 360 168 L360 230 L0 230 Z" fill="var(--hill1)"/>
+    <path d="M150 230 C160 200 175 175 196 150" stroke="var(--river)" stroke-width="9" fill="none" stroke-linecap="round" opacity=".8"/>
+    <path id="trail" d="M30 228 C50 205 40 190 60 184 C95 172 130 168 160 150 C185 136 200 140 220 120 C240 100 255 92 268 72 C280 54 292 48 302 40" stroke="var(--trail)" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M30 228 C50 205 40 190 60 184 C95 172 130 168 160 150 C185 136 200 140 220 120 C240 100 255 92 268 72 C280 54 292 48 302 40" stroke="var(--trail-dot)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="1 9"/>
+    <g fill="var(--tree)"><path d="M100 170 l8 -20 l8 20z"/><path d="M112 168 l6 -15 l6 15z"/><path d="M246 128 l7 -18 l7 18z"/><path d="M330 150 l8 -20 l8 20z"/><path d="M20 160 l7 -17 l7 17z"/></g>
+  </svg>`;
+}
+function wegScene(st,ak,sel){
+  const foxAt=STPOS[ak]||STPOS[0];
+  return `<div class="scene">${sceneSVG()}
+    ${st.map((x,i)=>{const p=STPOS[i]||STPOS[0];return `<button class="pin ${i===sel?"on":""} ${i<ak?"done":""} ${i===ak?"now":""}" style="left:${p[0]}%;top:${p[1]}%" data-station="${i}" aria-label="Station ${i+1}: ${esc(x.t)}"><span>${i<ak?"✓":STICON[i]||i+1}</span></button>`;}).join("")}
+    <div class="scene-fox" style="left:calc(${foxAt[0]}% + 22px);top:calc(${foxAt[1]}% - 34px)">${foxSVG("xs")}</div></div>`;
+}
+/* Spuren: Meilensteine auf dem Weg – Schule und alles andere */
+const SPUR_CAT=[["schule","📚","Schule"],["sport","🎾","Sport"],["ich","🌱","Ich"],["familie","🏡","Familie"],["freunde","🤝","Freunde"],["mut","🦁","Mut"]];
+const spurParse=n=>{const m=/^([a-z]+)::([\s\S]*)$/.exec(n.body||"");return m?{cat:m[1],text:m[2]}:{cat:"ich",text:n.body};};
+function spurenHTML(){
+  const N=S.notes.filter(n=>n.topic==="spur"),cat=S.spurCat||"schule";
+  return `<div class="card stack">
+    ${foxSay(KID()?"Was hast du geschafft? Jede Spur zählt – in der Schule, beim Tennis, mit Freunden oder ganz für dich.":"Was hat Philip geschafft? Jede Spur zählt – Schule, Tennis, Freunde, Mut, Familie.")}
+    ${S.preview?"":`<form class="spur-form" id="spur-form"><div class="chips" style="flex-wrap:wrap">${SPUR_CAT.map(([k,i,n])=>`<button type="button" class="chip ${cat===k?"on":""}" data-spurcat="${k}">${i} ${n}</button>`).join("")}</div>
+      <div class="note-form"><input class="inp" id="spur-text" maxlength="200" placeholder="${{schule:"z. B. Referat über Vulkane gehalten",sport:"z. B. Turnier gewonnen, Aufschlag geschafft",ich:"z. B. Ohne Erinnerung geübt",familie:"z. B. Zusammen gekocht",freunde:"z. B. Mit Jonas für den Test geübt",mut:"z. B. Im Unterricht nachgefragt"}[cat]}"><button class="btn sm" type="submit">Spur setzen</button></div></form>`}
+    ${N.length?`<div class="trail-list">${N.map((n,ix)=>{const s=spurParse(n),c=SPUR_CAT.find(x=>x[0]===s.cat)||SPUR_CAT[2];
+      return `<div class="spur ${ix%2?"r":""}"><span class="spur-ic">${c[1]}</span><div class="spur-tx"><p>${esc(s.text)}</p><p class="tiny muted">${esc(c[2])} · ${esc(memName(n.member_id))} · ${new Date(n.created_at).toLocaleDateString("de-DE",{day:"numeric",month:"short",year:"numeric"})}</p></div>${!S.preview&&(n.member_id===S.me.id||S.me.role==="parent")?`<button class="iconbtn" data-lw="ndel" data-id="${n.id}" aria-label="Löschen">✕</button>`:""}</div>`;}).join("")}</div>`
+      :`<p class="small muted" style="text-align:center">🐾 Noch keine Spuren. Setzt die erste!</p>`}
+  </div>`;
+}
+const LEIT_IC=["🧠","🌿","🔭","🧭","⭐"];
 function wegWeg(){
   const {c,base,viewing}=docContent("lernweg");const st=c.stationen||[],ak=c.aktuell||0,sel=S.station==null?ak:S.station,s=st[sel]||{};
   const steer=[[62,38],[42,58],[14,86]];
-  return `<div class="sec"><div class="hero"><p class="kicker" style="color:var(--gold)">Unser Plan als Familie</p><h2 class="hero-h">Hilf mir, es <span style="color:var(--gold)">selbst</span> zu tun.</h2><p class="tiny" style="opacity:.7">Maria Montessori</p>
-      <p class="hero-p">Die Apps sind der Anfang. Das Ziel ist größer: ${KID()?"Du weißt":"Philip weiß"}, wie ${KID()?"du dir":"er sich"} Wissen selbst holst${KID()?"":""}, ordnest und behältst. Die KI hilft dabei, aber sie denkt nicht für ${KID()?"dich":"ihn"}.</p>
-      <div class="steer"><p class="tiny" style="opacity:.75;font-weight:700;letter-spacing:.06em">WER STEUERT DAS LERNEN?</p>${steer.map((x,i)=>`<div class="steer-row"><b>Station ${i+1}</b><div class="steer-bar"><i style="width:${x[0]}%;background:rgba(255,255,255,.3)"></i><i style="width:${x[1]}%;background:var(--gold)"></i></div></div>`).join("")}
-      <p class="tiny" style="opacity:.75"><span class="sw" style="background:rgba(255,255,255,.3)"></span> Eltern <span class="sw" style="background:var(--gold)"></span> ${KID()?"du":"Philip"} · Schritt für Schritt mehr ${KID()?"du":"Philip"}</p></div></div></div>
-    ${viewing?`<p class="lw-banner small" style="margin-top:12px">Du siehst eine andere Fassung als die gültige. <button class="linkbtn" data-lw="view" data-doc="lernweg" data-id="">Zurück zur aktuellen</button></p>`:""}
-    <div class="sec"><h2>Drei Stationen</h2><div class="stations">${st.map((x,i)=>`<button class="station ${i===sel?"on":""}" data-station="${i}"><span class="st-top"><span class="st-num">${i+1}</span><span class="pill ${i===ak?"ok":""}">${i<ak?"geschafft":i===ak?"Jetzt":i===st.length-1?"Das Ziel":"Als Nächstes"}</span></span><b>${esc(x.t)}</b>${changed(base,"stationen",i,x)}<span class="small muted">${esc(x.d||"")}</span></button>`).join("")}</div>
-      <div class="card" style="margin-top:10px"><h3>${esc(s.t||"")}</h3><p class="small muted" style="margin-top:4px">${esc(s.w||"")}</p>
-        <div class="st-grid"><div><p class="tiny klbl">${KID()?"DU":"PHILIP"}</p><p class="small">${esc(s.p||"")}</p></div><div><p class="tiny klbl">${KID()?"MAMA UND PAPA":"WIR"}</p><p class="small">${esc(s.u||"")}</p></div><div><p class="tiny klbl">${sel===st.length-1?"ERREICHT, WENN":"WEITER, WENN"}</p><p class="small">${esc(s.n||"")}</p></div></div></div></div>
-    <div class="sec"><h2>Drei Sätze für unterwegs</h2><div class="stack">${(c.leitsaetze||[]).map((x,i)=>`<div class="card"><h3>${esc(x.t)}${changed(base,"leitsaetze",i,x)}</h3><p class="small muted" style="margin-top:4px">${esc(x.d||"")}</p></div>`).join("")}${removedNote(base,c,"leitsaetze")}</div></div>
-    <div class="sec"><h2>Woran wir merken, dass es klappt</h2><div class="card">${(c.signale||[]).map((x,i)=>`<div class="item"><div class="q small">👁 ${esc(x.t)}${changed(base,"signale",i,x)}</div></div>`).join("")}${removedNote(base,c,"signale")}</div></div>
-    <div class="sec"><h2>Weg anpassen</h2>${docBar("lernweg")}<p class="note">Stationen, Leitsätze, KI-Regeln und Signale sind gemeinsam änderbar. Eine neue Fassung gilt, wenn alle zugestimmt haben.</p></div>
-    <div class="sec"><h2>Was wir unterwegs merken</h2>${notesHTML("lernweg")}</div>`;
+  return `${viewing?`<p class="lw-banner small" style="margin-top:12px">Du siehst eine andere Fassung als die gültige. <button class="linkbtn" data-lw="view" data-doc="lernweg" data-id="">Zurück zur aktuellen</button></p>`:""}
+    <div class="sec">${wegScene(st,ak,sel)}
+      <button class="fox-say big" data-spruch="1" aria-label="Nächster Wegspruch">${foxSVG("sm")}<span class="bubble"><b>Das ist der Weg.</b><br>${esc(spruch())}<span class="tiny muted" style="display:block;margin-top:4px">Tipp auf mich für einen neuen Spruch.</span></span></button></div>
+    <div class="sec"><div class="sign"><div class="sign-top"><span class="sign-ic">${STICON[sel]||"📍"}</span><div><p class="tiny klbl">STATION ${sel+1} · ${sel<ak?"GESCHAFFT":sel===ak?"HIER SIND WIR":sel===st.length-1?"DAS ZIEL":"ALS NÄCHSTES"}</p><h3 class="fun">${esc(s.t||"")}${changed(base,"stationen",sel,s)}</h3></div></div>
+      <p style="margin-top:6px">${esc(s.w||"")}</p>
+      <div class="st-grid"><div><p class="tiny klbl">🦊 ${KID()?"DU":"PHILIP"}</p><p class="small">${esc(s.p||"")}</p></div><div><p class="tiny klbl">👨‍👩‍👦 ${KID()?"MAMA UND PAPA":"WIR"}</p><p class="small">${esc(s.u||"")}</p></div><div><p class="tiny klbl">🏁 ${sel===st.length-1?"ERREICHT, WENN":"WEITER, WENN"}</p><p class="small">${esc(s.n||"")}</p></div></div>
+      <div class="chips" style="margin-top:10px">${st.map((x,i)=>`<button class="chip ${i===sel?"on":""}" data-station="${i}">${STICON[i]||""} ${esc(x.t)}</button>`).join("")}</div></div></div>
+    <div class="sec"><h2 class="fun">🐾 Spuren auf unserem Weg</h2>${spurenHTML()}</div>
+    <div class="sec"><h2 class="fun">🧭 Was uns leitet</h2><div class="leit">${(c.leitsaetze||[]).map((x,i)=>`<div class="leit-c"><span class="leit-ic">${LEIT_IC[i%LEIT_IC.length]}</span><h3 class="fun">${esc(x.t)}${changed(base,"leitsaetze",i,x)}</h3><p class="small muted">${esc(x.d||"")}</p></div>`).join("")}</div>${removedNote(base,c,"leitsaetze")}</div>
+    <div class="sec"><h2 class="fun">🎒 Wer trägt den Rucksack?</h2><div class="card"><p class="small muted">Am Anfang tragen wir Eltern viel. Mit jeder Station trägst ${KID()?"du":"Philip"} mehr selbst.</p>
+      <div class="steer light">${steer.map((x,i)=>`<div class="steer-row"><b>${STICON[i]} ${i+1}</b><div class="steer-bar"><i style="width:${x[0]}%;background:var(--r2)"></i><i style="width:${x[1]}%;background:var(--gold)"></i></div></div>`).join("")}
+      <p class="tiny muted"><span class="sw" style="background:var(--r2)"></span> Eltern <span class="sw" style="background:var(--gold)"></span> ${KID()?"du":"Philip"}</p></div>
+      <p class="small" style="margin-top:10px">„Hilf mir, es selbst zu tun.“ <span class="muted">– Maria Montessori</span></p></div></div>
+    <div class="sec"><h2 class="fun">👀 Woran wir merken, dass es klappt</h2><div class="card">${(c.signale||[]).map((x,i)=>`<div class="item"><div class="q small">✨ ${esc(x.t)}${changed(base,"signale",i,x)}</div></div>`).join("")}${removedNote(base,c,"signale")}</div></div>
+    <div class="sec"><h2 class="fun">🔥 Am Lagerfeuer: was wir unterwegs merken</h2>${notesHTML("lernweg")}</div>
+    <div class="sec"><h2 class="fun">🗺️ Den Weg anpassen</h2>${docBar("lernweg")}<p class="note">Stationen, Leitsätze, KI-Regeln und Signale sind gemeinsam änderbar. Eine neue Fassung gilt, wenn alle zugestimmt haben.</p></div>`;
+}
+
+/* ---------- Manifest als Pakt ---------- */
+const MF_IC={eltern:["⚓","👀","🔦","🧠","🧗","👂","🌿","🧭","🤝","❤️"],kind:["🔭","🌧️","✏️","🙋","🏃","🤖","🗳️","🎮","🌟","💬"]};
+function vManifest(){
+  if(S.edit&&S.edit.doc==="manifest")return vEditor();
+  const D=docState("manifest"),{c,base,viewing,v}=docContent("manifest");if(!v)return `<div class="empty" style="margin-top:14px">Noch kein Manifest angelegt.</div>`;
+  const list=sec=>(c[sec]||[]).map((it,i)=>`<div class="mf-item"><span class="mf-ic">${esc(it.i||MF_IC[sec][i%10])}</span><div><p class="fun mf-t">${esc(it.t)}${changed(base,sec,i,it)}</p>${it.d?`<p class="small" style="margin-top:2px">${esc(it.d)}</p>`:""}</div></div>`).join("")+removedNote(base,c,sec);
+  const kidDraft=D.cur===null,sig=D.ap((D.pending||D.cur||v).id);
+  const parents=S.members.filter(m=>m.role==="parent"),kids=S.members.filter(m=>m.role==="child");
+  const signs=ms=>`<div class="signs">${ms.map(m=>`<div class="signature ${sig.includes(m.id)?"yes":""}"><span class="hand">${sig.includes(m.id)?esc(m.display_name):"&nbsp;"}</span><span class="tiny muted">${sig.includes(m.id)?"✓ einverstanden":esc(m.display_name)+" · noch offen"}</span></div>`).join("")}</div>`;
+  return `<div class="sec"><div class="pact-hero">${foxSVG("md")}<div><p class="kicker">Unser Pakt</p><h2 class="fun" style="font-size:1.5rem;line-height:1.15">Was wir uns versprechen</h2>
+      <p class="small" style="margin-top:4px">${KID()?"Was Mama und Papa dir versprechen und was du dir von ihnen wünschst.":"Was wir Philip versprechen und was Philip sich von uns wünscht."} Es gilt, wenn alle unterschrieben haben, und darf mit uns wachsen.</p></div></div></div>
+    ${viewing?`<p class="lw-banner small" style="margin-top:12px">Du siehst eine andere Fassung als die gültige. <button class="linkbtn" data-lw="view" data-doc="manifest" data-id="">Zurück zur aktuellen</button></p>`:""}
+    <div class="sec"><div class="paper"><p class="paper-h">${KID()?"Mama und Papa an dich":"Wir an Philip"}</p>${c.intro_eltern?`<p class="small muted" style="margin-bottom:6px">${esc(c.intro_eltern)}</p>`:""}${list("eltern")}${signs(parents)}</div></div>
+    <div class="sec"><div class="paper kid"><p class="paper-h">${KID()?"Du an Mama und Papa":"Philip an uns"}</p>${c.intro_kind?`<p class="small" style="margin-bottom:6px;color:var(--gold-ink)">${esc(c.intro_kind)}</p>`:""}${list("kind")}
+      ${kidDraft?`<p class="note">${KID()?"Das sind Vorschläge. Tippe unten auf „Ändern vorschlagen“ und mach es zu deinem Text.":"Philips Teil ist ein Entwurf in seiner Sprache. Er streicht, ändert und ergänzt ihn mit euch, bis es seiner ist."}</p>`:""}${signs(kids)}</div></div>
+    <div class="sec"><h2 class="fun">✍️ Unterschreiben und ändern</h2>${docBar("manifest")}</div>
+    <div class="sec"><h2 class="fun">🔥 Was wir unterwegs merken</h2>${notesHTML("manifest")}</div>`;
 }
 
 /* ---------- Für Philip: Forscher-Pass, Regeln, Werkzeugkiste, Werkstatt ---------- */
@@ -933,7 +1061,7 @@ function wegPhilip(){
   const st=LWS(),c=docContent("lernweg").c,rules=c.regeln||[],ro=!REALKID(),n=STAMPS.filter(s=>s.ok(st)).length;
   const t=TOOLS.find(x=>x.k===UIW.tool)||TOOLS[0],tier=TIERS.find(x=>x.k===t.tier),done=st.tried.includes(t.k);
   const fmtT=s=>Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
-  let h=`<div class="sec"><div class="hero"><p class="kicker" style="color:var(--gold)">${KID()?"Für dich":"Für Philip"}</p><h2 class="hero-h">${KID()?"Du bist":"Philip ist"} der <span style="color:var(--gold)">Forscher</span>. Die KI ist ${KID()?"dein":"sein"} Assistent.</h2>
+  let h=`<div class="sec"><div class="hero"><div class="hero-fox">${foxSVG("md")}</div><p class="kicker" style="color:var(--gold)">${KID()?"Für dich":"Für Philip"}</p><h2 class="hero-h">${KID()?"Du bist":"Philip ist"} der <span style="color:var(--gold)">Forscher</span>. Die KI ist ${KID()?"dein":"sein"} Assistent.</h2>
     <p class="hero-p">Eine KI kann ${KID()?"dir":"ihm"} die Hausaufgaben schreiben. Dann kann sie es und ${KID()?"du":"er"} nicht. Hier ${KID()?"lernst du":"lernt er"} in drei Schritten, wie ${KID()?"du":"er"} selbst schlauer ${KID()?"wirst":"wird"}. Für jeden Schritt gibt es einen Stempel.</p>
     <div class="stamps">${STAMPS.map(s=>`<div class="stamp ${s.ok(st)?"on":""}"><span class="ring">${s.i}</span>${esc(s.t)}</div>`).join("")}</div>
     <div class="passbar"><i style="width:${n/4*100}%"></i></div><p class="tiny" style="opacity:.8;font-weight:700">${n===4?"Alle 4 Stempel! Echter Forscher.":n+" von 4 Stempeln"}</p></div></div>
@@ -974,7 +1102,7 @@ function wegPhilip(){
 }
 function wegEltern(){
   const bridge=[["Hilf mir, es selbst zu tun","Philip denkt. Die KI gibt Tipps und fragt ab, sie löst nicht."],["Vorbereitete Umgebung","Apps, Material und Hausregeln, die zum Denken herausfordern."],["Fehlerkontrolle im Material","Die App zeigt sofort, was sitzt. Die KI prüft, statt zu erledigen."],["Freiarbeit und Präsentation","Station 3: eigene Projekte bauen und anderen erklären."]];
-  return `<div class="sec"><div class="hero"><p class="kicker" style="color:var(--gold)">Für uns Eltern</p><h2 class="hero-h">Montessori und unser Plan wollen <span style="color:var(--gold)">dasselbe</span>.</h2>
+  return `<div class="sec"><div class="hero"><div class="hero-fox">${foxSVG("md")}</div><p class="kicker" style="color:var(--gold)">Für uns Eltern</p><h2 class="hero-h">Montessori und unser Plan wollen <span style="color:var(--gold)">dasselbe</span>.</h2>
       <p class="hero-p">Selbstständig lernen kennt Philip aus der Schule. Was wir bewusst dazunehmen: das Üben, das Wissen erst sicher macht. Und klare Regeln für die KI.</p>
       <p class="hero-q">Freiarbeit und Training, nicht Freiarbeit oder Training.</p></div></div>
     <div class="sec"><h2>Vier Montessori-Prinzipien im Lernweg</h2><div class="stack">${bridge.map(([m,u])=>`<div class="bridge"><div class="b-m"><p class="tiny" style="color:var(--gold);font-weight:800">MONTESSORI</p><b>${esc(m)}</b></div><div class="b-u"><p class="tiny klbl">IM LERNWEG</p><p class="small">${esc(u)}</p></div></div>`).join("")}</div></div>
@@ -995,6 +1123,8 @@ function lwClick(b){
   const st=LWS(),d=b.dataset;
   if(d.wsub){S.wsub=d.wsub;try{localStorage.setItem("cockpit-wsub",d.wsub);}catch(x){}render();scrollTo(0,0);return true;}
   if(d.station!=null){S.station=+d.station;render();return true;}
+  if(d.spruch){S.spruch=(S.spruch||0)+1;render();const f=document.querySelector(".fox-say.big .fox");if(f){f.classList.add("hop");}return true;}
+  if(d.spurcat){S.spurCat=d.spurcat;const t=document.getElementById("spur-text");S.spurDraft=t?t.value:"";render();const n=document.getElementById("spur-text");if(n){n.value=S.spurDraft||"";n.focus();}return true;}
   if(d.rule!=null){const i=+d.rule;UIW.rule[i]=!UIW.rule[i];if(UIW.rule[i]&&REALKID()&&!st.rules.includes(i)){st.rules.push(i);lwSave(st);}else render();return true;}
   if(d.filter){UIW.filter=d.filter;render();return true;}
   if(d.tool){UIW.tool=d.tool;UIW.dice=null;render();const el=document.getElementById("tool-detail");if(el)el.scrollIntoView({behavior:"smooth",block:"nearest"});return true;}
@@ -1032,6 +1162,7 @@ document.addEventListener("input",e=>{
 });
 document.addEventListener("submit",e=>{
   const f=e.target;
+  if(f.id==="spur-form"){e.preventDefault();const t=document.getElementById("spur-text").value.trim();if(t){S.spurDraft="";noteAdd("spur",(S.spurCat||"schule")+"::"+t);}return;}
   if(f.classList.contains("note-form")){e.preventDefault();const t=f.querySelector("textarea").value.trim();if(t)noteAdd(f.dataset.topic,t);return;}
   if(f.id==="planner"){e.preventDefault();const thema=document.getElementById("p-thema").value.trim(),was=document.getElementById("p-was").value.trim();
     if(!thema){UIW.err="Schreib noch ein Thema rein.";UIW.was=was;render();return;}
